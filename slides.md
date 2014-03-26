@@ -1,4 +1,4 @@
-# YYCjs Slide Template
+# jQuery 202 & Web components
 
 ---
 
@@ -34,14 +34,273 @@
 
 ---
 
-## Last Month
-
-* Something awesome
-* More awesomeness
+# jQuery 202
 
 ---
 
-## Next Month
+## What are we going to do?
 
-* Something awesome
-* More awesomeness
+- Un-spaghetti and modularize your code
+- Making your code faster
+- Advanced selectors and DOM traversal
+- Writing your own plugins
+
+---
+
+## Scope in JavaScript
+
+__JavaScript only knows function scope__
+
+	!javascript
+	for(var i = 0; i < 10; i++) {
+		var x = 'testing';
+
+		(function(arg) {
+			var y = 42;
+		})(i);
+	}
+
+__Global variables__
+
+	!javascript
+	function test() {
+		var local = 42;
+		global = 'global';
+	}
+
+	test();
+
+---
+
+## Namespacing
+
+	!javascript
+	var App = {
+		init : function() {
+			/* ... */
+		},
+		Dummy : {
+			sayHi : function(name) {
+				return 'Hi ' + name;
+			}
+		}
+	}
+
+	App.Blog = {
+        getPosts : function() { /* ... */ }
+    }
+
+	console.log(App.Dummy.sayHi('David'));
+
+---
+
+## Modules
+
+	!javascript
+	var APP = (function() {
+		// Do stuff
+		var privateVariable = 'Hello ',
+			sayHi = function(name) {
+				return privateVariable + name;
+			};
+		// Return API
+		return {
+			init : function() { /* ... */ },
+			hi : sayHi
+		}
+	})();
+
+	console.log(APP.sayHi('David'));
+
+---
+
+## __A__synchronous __M__odule __D__efinition
+
+__AMD__: [CommonJS](http://www.commonjs.org/) specification for
+[asynchronously loading dependencies](https://github.com/amdjs/amdjs-api/wiki/AMD).
+
+	!javascript
+	// say_hi.js
+	define(function() {
+		var privateVariable = 'Hello ';
+		return {
+			sayHi : function(name) {
+                return privateVariable + name;
+            }
+		}
+	});
+
+	// module.js
+	define(['say_hi.js'], function(hisayer) {
+		return {
+			result : hisayer.sayHi('David'),
+			sayHi : hisayer
+		}
+	});
+
+	// app.js
+	var module = require('module.js', function(module) {
+		module.sayHi('You'); // Hello You
+		module.result; // -> Hello David
+	});
+
+---
+
+## jQuery performance
+
+With an empty list
+
+    !html
+    <ul></ul>
+
+We want to create 2000 list elements using jQuery:
+
+    !javascript
+    for(var i = 0; i < 2000; i++) {
+        $('ul').append('<li>Entry ' + i + '</li>');
+    }
+
+Storing the selector:
+
+    !javascript
+    var ul = $('ul');
+    for(var i = 0; i < 2000; i++) {
+        ul.append('<li>Entry ' + i + '</li>');
+    }
+
+---
+
+## Even faster...
+
+DOM manipulation is expensive. Avoid it whenever possible.
+
+Create a string with 2000 list elements, then append it:
+
+    !javascript
+    var html = '';
+
+    for(var i = 0; i < 2000; i++) {
+        html += '<li>Entry ' + i + '</li>';
+    }
+
+    $('ul').append(html);
+
+---
+
+## Advanced [selectors](http://api.jquery.com/category/selectors/)
+
+- Attribute `[attributeName]`
+    - Attribute contains `[attributeName*="something"]`
+    - Attribute equals `[attributeName="something"]`
+- Parent child `parent > child`
+- Next adjacent `prev + next`
+- Contains text `:contains("text")`
+- First and last `:first`, `:last`
+- Not selector `:not(otherSelector)`
+
+---
+
+## A jQuery plugin
+
+It's as simple as:
+
+    !javascript
+    // myplugin.js
+    (function($, undefined) {
+       $.fn.myButton = function() {
+        this.each(function(button) {
+          var text = button.text();
+          button.click(function() {
+            alert(text);
+          });
+        });
+
+        return this;
+       }
+    })(jQuery);
+
+And can be used like this:
+
+    !javascript
+    $('button').myButton();
+
+---
+
+## Accordion
+
+Building your own jQuery plugin to turn [Bootstrap panels with heading](http://getbootstrap.com/components/#panels-heading) into an accordion:
+
+    !javascript
+    // myplugin.js
+    (function($, undefined) {
+       $.fn.accordion = function() {
+         var element = this;
+
+         element.find('.panel-body:not(:first)').hide();
+
+         element.find('.panel-heading').on('click', function() {
+           element.find('.panel-body:visible').slideUp();
+           $(this).next('.panel-body').slideDown();
+         });
+       }
+    })(jQuery);
+
+Use it like this:
+
+    !javascript
+    $(function() {
+      $('#accordion').accordion();
+    });
+
+---
+
+# Web components
+
+---
+## What are we going to do?
+
+- Introduction to web components
+- Custom elements
+- Data driven views
+- Build web component style applications now with CanJS
+
+---
+
+## The web component model
+
+The component model for the Web ("Web Components") consists of five pieces:
+
+- [Templates](http://www.w3.org/TR/components-intro/#template-section), which define chunks of markup that are inert but can be activated for use later.
+- [Decorators](http://www.w3.org/TR/components-intro/#decorator-section), which apply templates based on CSS selectors to affect rich visual and behavioral changes to documents.
+- [Custom Elements](http://www.w3.org/TR/components-intro/#custom-element-section), which let authors define their own elements, with new tag names and new script interfaces.
+- [Shadow DOM](http://www.w3.org/TR/components-intro/#shadow-dom-section), which encapsulates a DOM subtree for more reliable composition of user interface elements.
+- [Imports](http://www.w3.org/TR/components-intro/#imports-section), which defines how templates, decorators and custom elements are packaged and loaded as a resource.
+
+---
+
+## Custom elements
+
+X
+
+---
+
+## Data driven templates
+
+X
+
+---
+
+## can.Component
+
+X
+
+---
+
+## Next Month - Node time
+
+We partner up with [Startup Calgary](http://startupcalgary.ca/) and take over the Hacknight on Tuesday.
+
+1. Node for noobs
+2. Real time mobile web apps
+
+![NodeJS logo](images/node_logo.png)

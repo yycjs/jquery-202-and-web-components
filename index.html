@@ -25,7 +25,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>YYCjs Slide Template</title>
+    <title>jQuery 202 &amp; Web components</title>
     <!-- Styles -->
     <link href='http://fonts.googleapis.com/css?family=Monda' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Racing+Sans+One' rel='stylesheet' type='text/css'>
@@ -63,7 +63,7 @@
         <div class="slide">
           <div class="inner">
             
-            <header><h1>YYCjs Slide Template</h1></header>
+            <header><h1>jQuery 202 &amp; Web components</h1></header>
             
             
           </div>
@@ -80,7 +80,7 @@
             </aside>
             
             <aside class="page_number">
-              1/6
+              1/22
             </aside>
             <img class="logo" src="theme/img/yycjs-logo.png">
           </footer>
@@ -118,7 +118,7 @@
             </aside>
             
             <aside class="page_number">
-              2/6
+              2/22
             </aside>
             <img class="logo" src="theme/img/yycjs-logo.png">
           </footer>
@@ -152,7 +152,7 @@
             </aside>
             
             <aside class="page_number">
-              3/6
+              3/22
             </aside>
             <img class="logo" src="theme/img/yycjs-logo.png">
           </footer>
@@ -184,7 +184,7 @@
             </aside>
             
             <aside class="page_number">
-              4/6
+              4/22
             </aside>
             <img class="logo" src="theme/img/yycjs-logo.png">
           </footer>
@@ -196,12 +196,43 @@
         <div class="slide">
           <div class="inner">
             
-            <header><h2>Last Month</h2></header>
+            <header><h1>jQuery 202</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              5/22
+            </aside>
+            <img class="logo" src="theme/img/yycjs-logo.png">
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h2>What are we going to do?</h2></header>
             
             
             <section><ul>
-<li>Something awesome</li>
-<li>More awesomeness</li>
+<li>Un-spaghetti and modularize your code</li>
+<li>Making your code faster</li>
+<li>Advanced selectors and DOM traversal</li>
+<li>Writing your own plugins</li>
 </ul></section>
             
           </div>
@@ -218,7 +249,295 @@
             </aside>
             
             <aside class="page_number">
-              5/6
+              6/22
+            </aside>
+            <img class="logo" src="theme/img/yycjs-logo.png">
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h2>Scope in JavaScript</h2></header>
+            
+            
+            <section><p><strong>JavaScript only knows function scope</strong></p>
+<div class="highlight"><pre><span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="s1">&#39;testing&#39;</span><span class="p">;</span>
+
+    <span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">arg</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">y</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+    <span class="p">})(</span><span class="nx">i</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+<p><strong>Global variables</strong></p>
+<div class="highlight"><pre><span class="kd">function</span> <span class="nx">test</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">local</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+    <span class="nx">global</span> <span class="o">=</span> <span class="s1">&#39;global&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">test</span><span class="p">();</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              7/22
+            </aside>
+            <img class="logo" src="theme/img/yycjs-logo.png">
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h2>Namespacing</h2></header>
+            
+            
+            <section><div class="highlight"><pre><span class="kd">var</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">init</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="cm">/* ... */</span>
+    <span class="p">},</span>
+    <span class="nx">Dummy</span> <span class="o">:</span> <span class="p">{</span>
+        <span class="nx">sayHi</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="s1">&#39;Hi &#39;</span> <span class="o">+</span> <span class="nx">name</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">App</span><span class="p">.</span><span class="nx">Blog</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">getPosts</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">App</span><span class="p">.</span><span class="nx">Dummy</span><span class="p">.</span><span class="nx">sayHi</span><span class="p">(</span><span class="s1">&#39;David&#39;</span><span class="p">));</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              8/22
+            </aside>
+            <img class="logo" src="theme/img/yycjs-logo.png">
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h2>Modules</h2></header>
+            
+            
+            <section><div class="highlight"><pre><span class="kd">var</span> <span class="nx">APP</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Do stuff</span>
+    <span class="kd">var</span> <span class="nx">privateVariable</span> <span class="o">=</span> <span class="s1">&#39;Hello &#39;</span><span class="p">,</span>
+        <span class="nx">sayHi</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">privateVariable</span> <span class="o">+</span> <span class="nx">name</span><span class="p">;</span>
+        <span class="p">};</span>
+    <span class="c1">// Return API</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="nx">init</span> <span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">},</span>
+        <span class="nx">hi</span> <span class="o">:</span> <span class="nx">sayHi</span>
+    <span class="p">}</span>
+<span class="p">})();</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">APP</span><span class="p">.</span><span class="nx">sayHi</span><span class="p">(</span><span class="s1">&#39;David&#39;</span><span class="p">));</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              9/22
+            </aside>
+            <img class="logo" src="theme/img/yycjs-logo.png">
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h2><strong>A</strong>synchronous <strong>M</strong>odule <strong>D</strong>efinition</h2></header>
+            
+            
+            <section><p><strong>AMD</strong>: <a href="http://www.commonjs.org/">CommonJS</a> specification for
+<a href="https://github.com/amdjs/amdjs-api/wiki/AMD">asynchronously loading dependencies</a>.</p>
+<div class="highlight"><pre><span class="c1">// say_hi.js</span>
+<span class="nx">define</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">privateVariable</span> <span class="o">=</span> <span class="s1">&#39;Hello &#39;</span><span class="p">;</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="nx">sayHi</span> <span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">privateVariable</span> <span class="o">+</span> <span class="nx">name</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// module.js</span>
+<span class="nx">define</span><span class="p">([</span><span class="s1">&#39;say_hi.js&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">hisayer</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="nx">result</span> <span class="o">:</span> <span class="nx">hisayer</span><span class="p">.</span><span class="nx">sayHi</span><span class="p">(</span><span class="s1">&#39;David&#39;</span><span class="p">),</span>
+        <span class="nx">sayHi</span> <span class="o">:</span> <span class="nx">hisayer</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// app.js</span>
+<span class="kd">var</span> <span class="nx">module</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;module.js&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">module</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">module</span><span class="p">.</span><span class="nx">sayHi</span><span class="p">(</span><span class="s1">&#39;You&#39;</span><span class="p">);</span> <span class="c1">// Hello You</span>
+    <span class="nx">module</span><span class="p">.</span><span class="nx">result</span><span class="p">;</span> <span class="c1">// -&gt; Hello David</span>
+<span class="p">});</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              10/22
+            </aside>
+            <img class="logo" src="theme/img/yycjs-logo.png">
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h2>jQuery performance</h2></header>
+            
+            
+            <section><p>With an empty list</p>
+<div class="highlight"><pre><span class="nt">&lt;ul&gt;&lt;/ul&gt;</span>
+</pre></div>
+
+<p>We want to create 2000 list elements using jQuery:</p>
+<div class="highlight"><pre><span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">2000</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;ul&#39;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="s1">&#39;&lt;li&gt;Entry &#39;</span> <span class="o">+</span> <span class="nx">i</span> <span class="o">+</span> <span class="s1">&#39;&lt;/li&gt;&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>Storing the selector:</p>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">ul</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;ul&#39;</span><span class="p">);</span>
+<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">2000</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">ul</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s1">&#39;&lt;li&gt;Entry &#39;</span> <span class="o">+</span> <span class="nx">i</span> <span class="o">+</span> <span class="s1">&#39;&lt;/li&gt;&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              11/22
+            </aside>
+            <img class="logo" src="theme/img/yycjs-logo.png">
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h2>Even faster...</h2></header>
+            
+            
+            <section><p>DOM manipulation is expensive. Avoid it whenever possible.</p>
+<p>Create a string with 2000 list elements, then append it:</p>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">html</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+
+<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">2000</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">html</span> <span class="o">+=</span> <span class="s1">&#39;&lt;li&gt;Entry &#39;</span> <span class="o">+</span> <span class="nx">i</span> <span class="o">+</span> <span class="s1">&#39;&lt;/li&gt;&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">$</span><span class="p">(</span><span class="s1">&#39;ul&#39;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">html</span><span class="p">);</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              12/22
             </aside>
             <img class="logo" src="theme/img/yycjs-logo.png">
           </footer>
@@ -230,12 +549,20 @@
         <div class="slide">
           <div class="inner">
             
-            <header><h2>Next Month</h2></header>
+            <header><h2>Advanced <a href="http://api.jquery.com/category/selectors/">selectors</a></h2></header>
             
             
             <section><ul>
-<li>Something awesome</li>
-<li>More awesomeness</li>
+<li>Attribute <code>[attributeName]</code><ul>
+<li>Attribute contains <code>[attributeName*="something"]</code></li>
+<li>Attribute equals <code>[attributeName="something"]</code></li>
+</ul>
+</li>
+<li>Parent child <code>parent &gt; child</code></li>
+<li>Next adjacent <code>prev + next</code></li>
+<li>Contains text <code>:contains("text")</code></li>
+<li>First and last <code>:first</code>, <code>:last</code></li>
+<li>Not selector <code>:not(otherSelector)</code></li>
 </ul></section>
             
           </div>
@@ -252,7 +579,341 @@
             </aside>
             
             <aside class="page_number">
-              6/6
+              13/22
+            </aside>
+            <img class="logo" src="theme/img/yycjs-logo.png">
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h2>A jQuery plugin</h2></header>
+            
+            
+            <section><p>It's as simple as:</p>
+<div class="highlight"><pre><span class="c1">// myplugin.js</span>
+<span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+   <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">myButton</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">button</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">text</span> <span class="o">=</span> <span class="nx">button</span><span class="p">.</span><span class="nx">text</span><span class="p">();</span>
+      <span class="nx">button</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+
+    <span class="k">return</span> <span class="k">this</span><span class="p">;</span>
+   <span class="p">}</span>
+<span class="p">})(</span><span class="nx">jQuery</span><span class="p">);</span>
+</pre></div>
+
+<p>And can be used like this:</p>
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;button&#39;</span><span class="p">).</span><span class="nx">myButton</span><span class="p">();</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              14/22
+            </aside>
+            <img class="logo" src="theme/img/yycjs-logo.png">
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h2>Accordion</h2></header>
+            
+            
+            <section><p>Building your own jQuery plugin to turn <a href="http://getbootstrap.com/components/#panels-heading">Bootstrap panels with heading</a> into an accordion:</p>
+<div class="highlight"><pre><span class="c1">// myplugin.js</span>
+<span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+   <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">accordion</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+     <span class="kd">var</span> <span class="nx">element</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+
+     <span class="nx">element</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.panel-body:not(:first)&#39;</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
+
+     <span class="nx">element</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.panel-heading&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;click&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+       <span class="nx">element</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.panel-body:visible&#39;</span><span class="p">).</span><span class="nx">slideUp</span><span class="p">();</span>
+       <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">next</span><span class="p">(</span><span class="s1">&#39;.panel-body&#39;</span><span class="p">).</span><span class="nx">slideDown</span><span class="p">();</span>
+     <span class="p">});</span>
+   <span class="p">}</span>
+<span class="p">})(</span><span class="nx">jQuery</span><span class="p">);</span>
+</pre></div>
+
+<p>Use it like this:</p>
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#accordion&#39;</span><span class="p">).</span><span class="nx">accordion</span><span class="p">();</span>
+<span class="p">});</span>
+</pre></div>
+</section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              15/22
+            </aside>
+            <img class="logo" src="theme/img/yycjs-logo.png">
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Web components</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              16/22
+            </aside>
+            <img class="logo" src="theme/img/yycjs-logo.png">
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h2>What are we going to do?</h2></header>
+            
+            
+            <section><ul>
+<li>Introduction to web components</li>
+<li>Custom elements</li>
+<li>Data driven views</li>
+<li>Build web component style applications now with CanJS</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              17/22
+            </aside>
+            <img class="logo" src="theme/img/yycjs-logo.png">
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h2>The web component model</h2></header>
+            
+            
+            <section><p>The component model for the Web ("Web Components") consists of five pieces:</p>
+<ul>
+<li><a href="http://www.w3.org/TR/components-intro/#template-section">Templates</a>, which define chunks of markup that are inert but can be activated for use later.</li>
+<li><a href="http://www.w3.org/TR/components-intro/#decorator-section">Decorators</a>, which apply templates based on CSS selectors to affect rich visual and behavioral changes to documents.</li>
+<li><a href="http://www.w3.org/TR/components-intro/#custom-element-section">Custom Elements</a>, which let authors define their own elements, with new tag names and new script interfaces.</li>
+<li><a href="http://www.w3.org/TR/components-intro/#shadow-dom-section">Shadow DOM</a>, which encapsulates a DOM subtree for more reliable composition of user interface elements.</li>
+<li><a href="http://www.w3.org/TR/components-intro/#imports-section">Imports</a>, which defines how templates, decorators and custom elements are packaged and loaded as a resource.</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              18/22
+            </aside>
+            <img class="logo" src="theme/img/yycjs-logo.png">
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h2>Custom elements</h2></header>
+            
+            
+            <section><p>X</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              19/22
+            </aside>
+            <img class="logo" src="theme/img/yycjs-logo.png">
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h2>Data driven templates</h2></header>
+            
+            
+            <section><p>X</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              20/22
+            </aside>
+            <img class="logo" src="theme/img/yycjs-logo.png">
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h2>can.Component</h2></header>
+            
+            
+            <section><p>X</p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              21/22
+            </aside>
+            <img class="logo" src="theme/img/yycjs-logo.png">
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: slides.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h2>Next Month - Node time</h2></header>
+            
+            
+            <section><p>We partner up with <a href="http://startupcalgary.ca/">Startup Calgary</a> and take over the Hacknight on Tuesday.</p>
+<ol>
+<li>Node for noobs</li>
+<li>Real time mobile web apps</li>
+</ol>
+<p><img alt="NodeJS logo" src="images/node_logo.png" /></p></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="slides.md">slides.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              22/22
             </aside>
             <img class="logo" src="theme/img/yycjs-logo.png">
           </footer>
@@ -268,7 +929,7 @@
       <caption>Table of Contents</caption>
       
       <tr id="toc-row-1">
-        <th><a href="#slide1">YYCjs Slide Template</a></th>
+        <th><a href="#slide1">jQuery 202 &amp; Web components</a></th>
         <td><a href="#slide1">1</a></td>
       </tr>
       
@@ -288,14 +949,100 @@
           <td><a href="#slide4">4</a></td>
         </tr>
         
-        <tr id="toc-row-5" class="sub">
-          <th><a href="#slide5">Last Month</a></th>
-          <td><a href="#slide5">5</a></td>
-        </tr>
+      
+      
+      <tr id="toc-row-5">
+        <th><a href="#slide5">jQuery 202</a></th>
+        <td><a href="#slide5">5</a></td>
+      </tr>
+      
         
         <tr id="toc-row-6" class="sub">
-          <th><a href="#slide6">Next Month</a></th>
+          <th><a href="#slide6">What are we going to do?</a></th>
           <td><a href="#slide6">6</a></td>
+        </tr>
+        
+        <tr id="toc-row-7" class="sub">
+          <th><a href="#slide7">Scope in JavaScript</a></th>
+          <td><a href="#slide7">7</a></td>
+        </tr>
+        
+        <tr id="toc-row-8" class="sub">
+          <th><a href="#slide8">Namespacing</a></th>
+          <td><a href="#slide8">8</a></td>
+        </tr>
+        
+        <tr id="toc-row-9" class="sub">
+          <th><a href="#slide9">Modules</a></th>
+          <td><a href="#slide9">9</a></td>
+        </tr>
+        
+        <tr id="toc-row-10" class="sub">
+          <th><a href="#slide10"><strong>A</strong>synchronous <strong>M</strong>odule <strong>D</strong>efinition</a></th>
+          <td><a href="#slide10">10</a></td>
+        </tr>
+        
+        <tr id="toc-row-11" class="sub">
+          <th><a href="#slide11">jQuery performance</a></th>
+          <td><a href="#slide11">11</a></td>
+        </tr>
+        
+        <tr id="toc-row-12" class="sub">
+          <th><a href="#slide12">Even faster...</a></th>
+          <td><a href="#slide12">12</a></td>
+        </tr>
+        
+        <tr id="toc-row-13" class="sub">
+          <th><a href="#slide13">Advanced <a href="http://api.jquery.com/category/selectors/">selectors</a></a></th>
+          <td><a href="#slide13">13</a></td>
+        </tr>
+        
+        <tr id="toc-row-14" class="sub">
+          <th><a href="#slide14">A jQuery plugin</a></th>
+          <td><a href="#slide14">14</a></td>
+        </tr>
+        
+        <tr id="toc-row-15" class="sub">
+          <th><a href="#slide15">Accordion</a></th>
+          <td><a href="#slide15">15</a></td>
+        </tr>
+        
+      
+      
+      <tr id="toc-row-16">
+        <th><a href="#slide16">Web components</a></th>
+        <td><a href="#slide16">16</a></td>
+      </tr>
+      
+        
+        <tr id="toc-row-17" class="sub">
+          <th><a href="#slide17">What are we going to do?</a></th>
+          <td><a href="#slide17">17</a></td>
+        </tr>
+        
+        <tr id="toc-row-18" class="sub">
+          <th><a href="#slide18">The web component model</a></th>
+          <td><a href="#slide18">18</a></td>
+        </tr>
+        
+        <tr id="toc-row-19" class="sub">
+          <th><a href="#slide19">Custom elements</a></th>
+          <td><a href="#slide19">19</a></td>
+        </tr>
+        
+        <tr id="toc-row-20" class="sub">
+          <th><a href="#slide20">Data driven templates</a></th>
+          <td><a href="#slide20">20</a></td>
+        </tr>
+        
+        <tr id="toc-row-21" class="sub">
+          <th><a href="#slide21">can.Component</a></th>
+          <td><a href="#slide21">21</a></td>
+        </tr>
+        
+        <tr id="toc-row-22" class="sub">
+          <th><a href="#slide22">Next Month - Node time</a></th>
+          <td><a href="#slide22">22</a></td>
         </tr>
         
       
