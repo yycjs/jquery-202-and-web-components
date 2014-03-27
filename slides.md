@@ -266,7 +266,7 @@ Use it like this:
 
 ---
 
-## The web component model
+## The [web component model](http://www.w3.org/TR/components-intro)
 
 The component model for the Web ("Web Components") consists of five pieces:
 
@@ -280,19 +280,110 @@ The component model for the Web ("Web Components") consists of five pieces:
 
 ## Custom elements
 
-X
+    !javascript
+    document.registerElement('todo-list');
+
+Lets you do:
+
+    !html
+    <todo-list id="todos"></todo-list>
+
+Which is great because it also allows to:
+
+    !javascript
+    var todo = Object.create(HTMLElement.prototype);
+
+    todo.addTodo = function(description) {
+        var paragraph = document.createElement('p');
+        paragraph.innerHTML = description;
+        this.appendChild(paragraph);
+    };
+
+    document.registerElement('todo-list', {
+        prototype: todo
+    });
+
+And then work with it:
+
+    !javascript
+    document.getElementById('todos').addTodo('Hello there');
 
 ---
 
-## Data driven templates
+## The bright future
 
-X
+Directly load third party components and customize them.
+
+    !html
+    <link rel="import" href="http://yycjs.com/davids-awesome-grid.html">
+
+    <davids-awesome-grid class="grid">
+        <grid-row>
+            <grid-column from="name"></grid-column>
+            <grid-column>Delete</grid-column>
+        </grid-row>
+    </davids-awesome-grid>
+
+    <script>
+        document.querySelector('davids-awesome-grid').setData([{
+            name: 'Eric'
+        }, {
+            name: 'David'
+        }]);
+    </script>
+
+---
+
+## Data driven views
+
+    X
 
 ---
 
 ## can.Component
 
-X
+The [CanJS](http://canjs.us/) approach of controller + custom elements + data driven templates:
+
+    !javascript
+    can.Component.extend({
+      tag: "todos-app",
+      scope: {
+        selectedTodo: null,
+        todos: new Todo.List({}),
+        select: function(todo){
+          this.attr('selectedTodo', todo);
+        },
+        save: function(todo) {
+          todo.save();
+          this.removeAttr('selectedTodo');
+        }
+      }
+    });
+
+---
+
+    !html
+    <todos-app>
+      <h2>Todays to-dos</h2>
+      {{#selectedTodo}}
+      <input type='text'
+             can-value='description'
+             can-change="save"/>
+      {{/selectedTodo}}
+      <ul>
+        {{#each todos}}
+        <li>
+          <input type='checkbox'
+                 can-value='complete'/>
+          <span class="{{#if complete}}done{{/if}}"
+                can-click='select'>
+            {{description}}
+          </span>
+          <button can-click="destroy"></button>
+        </li>
+        {{/each}}
+      </ul>
+    </todos-app>
 
 ---
 
