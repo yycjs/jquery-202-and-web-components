@@ -278,6 +278,18 @@ The component model for the Web ("Web Components") consists of five pieces:
 
 ---
 
+## Polyfills
+
+### [Google Polymer](http://www.polymer-project.org/)
+
+<img src="images/polymer-logo.svg" style="height: 200px;" alt="Polymer Logo" />
+
+### [Mozilla X-Tags](http://www.x-tags.org/)
+
+<img src="images/x-tags-logo.png" style="height: 200px;" alt="X-Tags Logo" />
+
+---
+
 ## Custom elements
 
     !javascript
@@ -336,7 +348,29 @@ Directly load third party components and customize them.
 
 ## Data driven views
 
-    X
+Use HTML style declarations
+
+    !html
+    <ul>
+      <li ng-repeat="todo in todos | filter:statusFilter track by $index"
+        ng-class="{completed: todo.completed, editing: todo == editedTodo}">
+            ...
+      </li>
+    </ul>
+
+Or a templating language like [Handlebars](http://handlebarsjs.com/):
+
+    !html
+    {{#each filteredTodos}}
+    <ul>
+      <li class="todo{{#if complete}} completed{{/if}}
+        {{#if editing}} editing{{/if}}">
+        ...
+      </li>
+    </ul>
+    {{/each}}
+
+That __updates automatically__ when its data changes.
 
 ---
 
@@ -362,21 +396,23 @@ The [CanJS](http://canjs.us/) approach of controller + custom elements + data dr
 
 ---
 
+## can.view.mustache
+
     !html
     <todos-app>
       <h2>Todays to-dos</h2>
       {{#selectedTodo}}
-      <input type='text'
-             can-value='description'
-             can-change="save"/>
+      <input type="text"
+             can-value="description"
+             can-change="save">
       {{/selectedTodo}}
       <ul>
         {{#each todos}}
         <li>
-          <input type='checkbox'
-                 can-value='complete'/>
+          <input type="checkbox"
+                 can-value="complete">
           <span class="{{#if complete}}done{{/if}}"
-                can-click='select'>
+                can-click="select">
             {{description}}
           </span>
           <button can-click="destroy"></button>
@@ -389,7 +425,7 @@ The [CanJS](http://canjs.us/) approach of controller + custom elements + data dr
 
 ## Next Month - Node time
 
-We partner up with [Startup Calgary](http://startupcalgary.ca/) and take over the Hacknight on Tuesday.
+We partner up with [Startup Calgary](http://startupcalgary.ca/) and take over the [Hacknight]() on Tuesday, April 29th.
 
 1. Node for noobs
 2. Real time mobile web apps
