@@ -185,6 +185,10 @@ Create a string with 2000 list elements, then append it:
 
     $('ul').append(html);
 
+The best:
+
+Separate HTML from your JavaScript and use a client side templating language like [\_.template](http://underscorejs.org/#template), [Mustache](http://mustache.github.io/), [Handlebars](http://handlebarsjs.com/), [EJS](https://github.com/visionmedia/ejs) or [Jade](http://jade-lang.com/).
+
 ---
 
 ## Advanced [selectors](http://api.jquery.com/category/selectors/)
